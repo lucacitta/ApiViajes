@@ -2,9 +2,12 @@ from django.utils.translation import activate
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
 
 from apps.destinations.models import Destination
 from .serializers import DestinationApiSerializer
+
+
 
 @api_view(['GET'])
 def destination_api_view(request):
