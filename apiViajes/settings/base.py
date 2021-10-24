@@ -137,3 +137,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #         'rest_framework.permissions.IsAuthenticated',
 #     )
 # }
+
+
+# Custom authenticate
+
+TOKEN_EXPIRED_AFTER_SECONDS = 10

@@ -6,16 +6,16 @@ from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.authtoken.models import Token
-from rest_framework import request, status
+from rest_framework import status
 
+from .authentication_mixins import Authentication
 from .api.serializers import UserLoginSerializer
 
-class Login(ObtainAuthToken):
+class Login(Authentication, ObtainAuthToken):
 
     def post(self, request, *args, **kwargs):
         login_serializer = self.serializer_class(data=request.data, context={'request':request})
         if login_serializer.is_valid():
-            print('paso validaciones')
             user = login_serializer.validated_data['user']
             if user.is_active:
                 token,created = Token.objects.get_or_create(user=user)
