@@ -24,11 +24,7 @@ class UserToken(APIView):
                 'error':'Credenciales enviadas incorrectas'
             }, status=status.HTTP_400_BAD_REQUEST)
 
-
-
-
-
-class Login(Authentication, ObtainAuthToken):
+class Login(ObtainAuthToken):
     def post(self, request, *args, **kwargs):
         login_serializer = self.serializer_class(data=request.data, context={'request':request})
         if login_serializer.is_valid():
