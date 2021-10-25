@@ -1,10 +1,27 @@
 from rest_framework.decorators import api_view
+from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework import status
 
 from apps.trips.models import Travel, Passanger
 from .serializers import TravelApiSerializer, PassangerApiSerializer
 
+#Metodo con generics
+class Travel_api_view(generics.ListAPIView):
+    serializer_class = TravelApiSerializer
+
+    def get_queryset(self):
+        return Travel.objects.filter(active=True)
+
+class Travel_api_retrieve_view(generics.RetrieveAPIView):
+    serializer_class = TravelApiSerializer
+
+    def get_queryset(self):
+        return self.get_serializer().Meta.model.objects.filter(active = True)
+
+
+# Mismo codigo, creado con el decorador @api_view
+'''
 @api_view(['GET'])
 def travel_api_view(request):
     travel = Travel.objects.all().filter(active = True)
@@ -25,5 +42,6 @@ def travel_api_detail_view(request, pk=None):
 
     data = [{'travel':travel_serializer.data}, {'passangers':passanger_serializer.data}]
     return Response(data = data , status = status.HTTP_200_OK)
+'''
 
 

@@ -1,5 +1,4 @@
 from datetime import datetime
-from django.contrib import sessions
 from django.contrib.sessions.models import Session
 
 from rest_framework.authtoken.views import ObtainAuthToken
@@ -11,8 +10,25 @@ from rest_framework import status
 from .authentication_mixins import Authentication
 from .api.serializers import UserLoginSerializer
 
-class Login(Authentication, ObtainAuthToken):
 
+class UserToken(APIView):
+    def get(self, request, *args, **kwargs):
+        username = request.GET.get('username')
+        try:
+            user_token = Token.objects.get(
+                user = UserLoginSerializer().Meta.model.objects.filter(username = username).first()
+            )
+            return Response({'token':user_token.key})
+        except:
+            return Response({
+                'error':'Credenciales enviadas incorrectas'
+            }, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
+
+class Login(Authentication, ObtainAuthToken):
     def post(self, request, *args, **kwargs):
         login_serializer = self.serializer_class(data=request.data, context={'request':request})
         if login_serializer.is_valid():
