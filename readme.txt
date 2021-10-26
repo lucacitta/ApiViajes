@@ -1,3 +1,10 @@
+# Usuarios: En caso de no querer crear un superusuario, esta subida la base de datos, donde hay superusuarios creados.
+    username = luca
+    password = 123456
+    
+    username = cami
+    password = 123456
+
 # Autenticacion: Actualmente, es necesario tener tokens para poder ingresar:
     Entrar a la ruta users/login/, en metodo POST pasando el usuario y la contraseña, esto obtener el token.
     Para ingresar a otras vistas pasar el token en el headers como Authorization.
