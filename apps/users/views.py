@@ -64,7 +64,6 @@ class Login(ObtainAuthToken):
             return Response({'error':'Credenciales incorrectas'}, status=status.HTTP_400_BAD_REQUEST)
 
 class Logout(APIView):
-
     def post(self, request, *args, **kwargs):
         token = request.POST.get('token')
         token = Token.objects.filter(key = token).first()

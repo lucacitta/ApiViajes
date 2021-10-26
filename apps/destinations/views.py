@@ -6,7 +6,7 @@ from rest_framework import status
 from apps.users.authentication_mixins import Authentication
 from .api.serializers import DestinationApiSerializer
 
-class DestinationViewSet(Authentication, viewsets.ModelViewSet):
+class DestinationViewSet(viewsets.ModelViewSet):
     serializer_class = DestinationApiSerializer
 
     def get_queryset(self, pk = None):

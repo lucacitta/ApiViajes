@@ -47,7 +47,8 @@ LOCAL_APPS = [
 
 THIRD_APPS = [
     'rest_framework',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
+    # 'corsheaders'
     #'rest_framework_simplejwt',
 ]
 
@@ -55,6 +56,7 @@ INSTALLED_APPS = BASE_APPS + LOCAL_APPS + THIRD_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    # "corsheaders.middleware.CorsMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -128,17 +130,12 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-# # Authentication
-# REST_FRAMEWORK = {
-#     'DEFAULT_AUTHENTICATION_CLASSES': (
-#         'rest_framework_simplejwt.authentication.JWTAuthentication',
-#     ),
-#     'DEFAULT_PERMISSION_CLASSES':(
-#         'rest_framework.permissions.IsAuthenticated',
-#     )
-# }
-
-
 # Custom authenticate
 
 TOKEN_EXPIRED_AFTER_SECONDS = 900
+
+
+# Cors config
+
+# CORS_ALLOWED_ORIGINS = ['*']
+# CORS_ORIGIN_WHITELIST=['*']

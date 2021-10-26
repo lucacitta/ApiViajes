@@ -5,5 +5,7 @@
 
 # Vistas:
     Las vista users esta echa con decorador @api_view
+
     Las vistas trips estan echas con generics
+
     Las vistas de destinations estan echas con ModelViewSet
