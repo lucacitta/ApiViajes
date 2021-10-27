@@ -22,7 +22,6 @@ class Authentication(object):
             if user != None and token != None:
                 self.user = user
                 return user
-            print(message)
             return message
         return None
 

@@ -1,9 +1,8 @@
-from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import viewsets
 from rest_framework import status
 
-from apps.users.authentication_mixins import Authentication
+
 from .api.serializers import DestinationApiSerializer
 
 class DestinationViewSet(viewsets.ModelViewSet):

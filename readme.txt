@@ -1,7 +1,7 @@
 # Usuarios: En caso de no querer crear un superusuario, esta subida la base de datos, donde hay superusuarios creados.
     username = luca
     password = 123456
-    
+
     username = cami
     password = 123456
 
