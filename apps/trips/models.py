@@ -28,3 +28,5 @@ class Passanger(models.Model):
 
     def __str__(self):
         return str(self.document_id)
+
+
